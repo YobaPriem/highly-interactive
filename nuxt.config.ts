@@ -1,3 +1,6 @@
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
+import path from 'path'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   ssr: true,
@@ -10,4 +13,13 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  vite: {
+    plugins: [
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(process.cwd(), 'assets/icons')],
+        symbolId: 'icon-[dir]-[name]',
+        inject: 'body-first'
+      }),
+    ]
+  }
 })

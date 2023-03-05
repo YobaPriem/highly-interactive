@@ -1,6 +1,7 @@
 <template>
     <button
         class="
+            bg-base-gray-2
             shadow-base
             active:shadow-base-active
             disabled:opacity-30
@@ -10,12 +11,3 @@
         <slot/>
     </button>
 </template>
-
-<script setup lang="ts">
-defineProps({
-    iconCode: {
-        required: true,
-        type: String,
-    }
-})
-</script>

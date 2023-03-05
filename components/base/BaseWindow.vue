@@ -8,20 +8,9 @@
     >
         <BaseTitleBar
             ref="baseTitleBar"
+            text="test fix c"
             :is-focused="isFocused"
         >
-            <template #left>
-                <BaseTitleBarLeft
-                    text="test"
-                >
-                    <template #icon>
-                        <BaseIcon icon-code="buttons/restore"/>
-                    </template>
-                </BaseTitleBarLeft>
-            </template>
-            <template #right>
-                jopa
-            </template>
         </BaseTitleBar>
         <div
             class="bg-base-gray-2 grow"
@@ -32,7 +21,7 @@
 </template>
 
 <script setup lang="ts">
-import BaseTitleBar from './title-bar/BaseTitleBar.vue'
+import BaseTitleBar from './BaseTitleBar.vue'
 
 const baseTitleBar = ref<InstanceType<typeof BaseTitleBar>>()
 const self = ref<HTMLElement>()
