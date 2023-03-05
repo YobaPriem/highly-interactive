@@ -1,7 +1,7 @@
 <template>
     <div
         ref="self"
-        class="p-[3px] shadow-window absolute flex flex-col min-w-[100px]"
+        class="p-[3px] shadow-base absolute flex flex-col min-w-[100px]"
         tabindex="0"
         @focus="setFocus(true)"
         @blur="setFocus(false)"
