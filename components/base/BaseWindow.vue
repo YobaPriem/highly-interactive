@@ -1,38 +1,41 @@
 <template>
     <div
         ref="self"
-        class="p-[3px] shadow-window absolute"
+        class="p-[3px] shadow-window absolute flex flex-col min-w-[100px]"
         tabindex="0"
         @focus="setFocus(true)"
         @blur="setFocus(false)"
     >
-        <div
-            class="bg-base-gray-2"
-        >
-
-        </div>
         <BaseTitleBar
+            ref="baseTitleBar"
             :is-focused="isFocused"
         >
-            <template #title>
-                <BaseTitleBarTitle
+            <template #left>
+                <BaseTitleBarLeft
                     text="test"
                 >
                     <template #icon>
                         <BaseIcon icon-code="buttons/restore"/>
                     </template>
-                </BaseTitleBarTitle>
+                </BaseTitleBarLeft>
             </template>
-            <template #buttons>
+            <template #right>
                 jopa
             </template>
         </BaseTitleBar>
+        <div
+            class="bg-base-gray-2 grow"
+        >
+
+        </div>
     </div>
 </template>
 
 <script setup lang="ts">
+import BaseTitleBar from './title-bar/BaseTitleBar.vue'
 
-const self = ref<HTMLElement | null>(null)
+const baseTitleBar = ref<InstanceType<typeof BaseTitleBar>>()
+const self = ref<HTMLElement>()
 const isFocused = ref(false)
 
 const setFocus = (value: boolean) => {
@@ -40,7 +43,9 @@ const setFocus = (value: boolean) => {
 }
 
 onMounted(() => {
-    if (self.value) useDrag(self.value)
+    if (baseTitleBar.value && self.value) {
+        useDrag(baseTitleBar.value?.self, self.value)
+    }
 })
 
 </script>
