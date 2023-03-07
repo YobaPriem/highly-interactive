@@ -1,10 +1,19 @@
-const useDrag = (options: {
+const useResize = (options: {
     point: HTMLElement,
-    target?: HTMLElement
+    target?: HTMLElement,
+    direction: 'vertical' | 'horizontal' | 'both'
 }) => {
+    // TODO: Do we need touch listeners?
+
     const dragPoint = options.point
     const dragTarget = options.target ?? dragPoint
+    const direction = options.direction
     let started = false
+
+    const sizeValues = {
+        initialH: 0,
+        initialW: 0
+    }
 
     const posValues = {
         startX: 0,
@@ -15,11 +24,13 @@ const useDrag = (options: {
         deltaY: 0,
     }
 
-
     const dragStartHandler = (e: TouchEvent | MouseEvent) => {
         if (e.target as HTMLElement !== dragPoint) return void 0
         started = true
     
+        sizeValues.initialW = dragTarget.offsetWidth
+        sizeValues.initialH = dragTarget.offsetHeight
+
         let posX = 0
         let posY = 0
     
@@ -31,8 +42,8 @@ const useDrag = (options: {
             posY = e.clientY
         }
     
-        posValues.startX = posX - posValues.deltaX
-        posValues.startY = posY - posValues.deltaY
+        posValues.startX = posX
+        posValues.startY = posY
 
         attachListeners()
     }
@@ -58,15 +69,18 @@ const useDrag = (options: {
     
         posValues.deltaX = posValues.currentX - posValues.startX
         posValues.deltaY = posValues.currentY - posValues.startY
-    
-        dragTarget.style.transform = "translate3d(" + posValues.deltaX + "px, " + posValues.deltaY + "px, 0)"
+        
+        if (direction === 'horizontal' || direction === 'both') {
+            dragTarget.style.width = `${sizeValues.initialW + posValues.deltaX}px`
+        }
+        if (direction === 'vertical' || direction === 'both') {
+            dragTarget.style.height = `${sizeValues.initialH + posValues.deltaX}px`
+        }
     }
     
-    const dragEndHandler = (e: TouchEvent | MouseEvent) => {
-        if (!started || e.target as HTMLElement !== dragPoint) return void 0
+    const dragEndHandler = () => {
+        if (!started) return void 0
         started = false
-        posValues.startX = posValues.currentX
-        posValues.startY = posValues.currentY
 
         detachListeners()
     }
@@ -74,19 +88,19 @@ const useDrag = (options: {
     const attachListeners = () => {
         document.addEventListener('mousemove', dragProccessingHandler)
         document.addEventListener('mouseup', dragEndHandler)
-        document.addEventListener('touchmove', dragProccessingHandler)
-        document.addEventListener('touchend', dragEndHandler)
+        // document.addEventListener('touchmove', dragProccessingHandler)
+        // document.addEventListener('touchend', dragEndHandler)
     }
 
     const detachListeners = () => {
         document.removeEventListener('mousemove', dragProccessingHandler)
         document.removeEventListener('mouseup', dragEndHandler)
-        document.removeEventListener('touchmove', dragProccessingHandler)
-        document.removeEventListener('touchend', dragEndHandler)
+        // document.removeEventListener('touchmove', dragProccessingHandler)
+        // document.removeEventListener('touchend', dragEndHandler)
     }
     
     document.addEventListener('mousedown', dragStartHandler)
-    document.addEventListener('touchstart', dragStartHandler)
+    // document.addEventListener('touchstart', dragStartHandler)
 }
 
-export default useDrag
+export default useResize

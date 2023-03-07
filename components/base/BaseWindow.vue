@@ -32,8 +32,11 @@ const setFocus = (value: boolean) => {
 }
 
 onMounted(() => {
-    if (baseTitleBar.value && self.value) {
-        useDrag(baseTitleBar.value?.self, self.value)
+    if (baseTitleBar.value && baseTitleBar.value.self && self.value) {
+        useDrag({
+            point: baseTitleBar.value.self,
+            target: self.value
+        })
     }
 })
 

@@ -15,7 +15,9 @@
         >
             {{ text }}
         </div>
-        <BaseButton>
+        <BaseButton
+            :hide-paddings="true"
+        >
             <BaseIcon
                 icon-code="icon-buttons-close"
             />
@@ -25,7 +27,7 @@
 
 <script setup lang="ts">
 import 'virtual:svg-icons-register'
-const self = ref()
+const self = ref<HTMLElement>()
 
 defineProps({
     text: {

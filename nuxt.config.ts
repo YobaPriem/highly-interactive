@@ -7,12 +7,21 @@ export default defineNuxtConfig({
   css: [
       '~/assets/styles/main.css'
   ],
+  modules: [
+    '@pinia/nuxt'
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
+  components: [
+    {
+      path: '~/components/',
+      pathPrefix: false
+    }
+  ],
   vite: {
     plugins: [
       createSvgIconsPlugin({
