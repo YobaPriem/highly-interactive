@@ -7,3 +7,9 @@
     </header>
 </template>
 
+<script setup lang="ts">
+import { useTaskBarStore } from '~/stores/taskbar'
+
+const taskBarStore = useTaskBarStore()
+
+</script>
