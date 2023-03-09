@@ -9,7 +9,7 @@
         <BaseTitleBar
             ref="baseTitleBar"
             text="test fix c"
-            :is-focused="isFocused"
+            :is-focused="window.isFocused"
         >
         </BaseTitleBar>
         <div
@@ -21,15 +21,31 @@
 </template>
 
 <script setup lang="ts">
+import { IWindowComponent, WindowStatus } from '~/interfaces/window'
+import { useTaskBarStore } from '~/stores/taskbar'
 import BaseTitleBar from './BaseTitleBar.vue'
 
+const store = useTaskBarStore()
+const instance = getCurrentInstance()
 const baseTitleBar = ref<InstanceType<typeof BaseTitleBar>>()
 const self = ref<HTMLElement>()
-const isFocused = ref(false)
 
 const setFocus = (value: boolean) => {
-    isFocused.value = value
+    window.isFocused = value
 }
+
+const setStatus = (value: WindowStatus) => {
+    window.status = value
+}
+
+const window = reactive<IWindowComponent>({
+    uid: instance?.uid ?? 0,
+    title: 'Window: ' + instance?.uid ?? 0,
+    status: 'opened',
+    isFocused: false,
+    setStatus,
+    setFocus
+})
 
 onMounted(() => {
     if (baseTitleBar.value && baseTitleBar.value.self && self.value) {
@@ -38,6 +54,8 @@ onMounted(() => {
             target: self.value
         })
     }
+
+    store.addOpenedWindow(window)
 })
 
 </script>

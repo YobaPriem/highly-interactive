@@ -2,8 +2,8 @@
   <div
     class="w-screen h-screen overflow-hidden scale-100 bg-classic-teal"
   >
-    <TestWindow/>
-    <TestWindow/>
+    <BaseWindow/>
+    <BaseWindow/>
     <TheTaskBar/>
   </div>
 </template>

@@ -4,6 +4,11 @@
     >
         <TheTaskBarStart/> 
         <TheTaskBarQuickLaunch/>
+        <TaskBarWindow
+            v-for="window in taskBarStore.openedWindows"
+            :key="window.uid"
+            :window-component="window"
+        />
     </header>
 </template>
 
@@ -11,5 +16,4 @@
 import { useTaskBarStore } from '~/stores/taskbar'
 
 const taskBarStore = useTaskBarStore()
-
 </script>

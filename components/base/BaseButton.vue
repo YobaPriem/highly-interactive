@@ -9,7 +9,8 @@
             items-center
         "
         :class="{
-            'px-[3px] py-1': !hidePaddings
+            'px-[3px] py-1': !hidePaddings,
+            'shadow-base-active': active
         }"
         type="button"
     >
@@ -20,6 +21,11 @@
 <script setup lang="ts">
 defineProps({
     hidePaddings: {
+        required: false,
+        type: Boolean,
+        default: false
+    },
+    active: {
         required: false,
         type: Boolean,
         default: false

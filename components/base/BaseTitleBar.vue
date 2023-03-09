@@ -29,7 +29,7 @@
 import 'virtual:svg-icons-register'
 const self = ref<HTMLElement>()
 
-defineProps({
+const props = defineProps({
     text: {
         required: true,
         type: String,

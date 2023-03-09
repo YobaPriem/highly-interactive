@@ -1,9 +1,10 @@
 import { defineStore } from "pinia"
+import { IWindowComponent } from "~/interfaces/window"
 
 export const useTaskBarStore = defineStore('taskbar', {
     state: () => ({
         // TODO: дотипизировать
-        openedWindows: [] as unknown[],
+        openedWindows: [] as IWindowComponent[],
         soundLevel: 100,
     }),
     actions: {
@@ -13,8 +14,8 @@ export const useTaskBarStore = defineStore('taskbar', {
 
             this.soundLevel = value
         },
-        addOpenedWindow() {
-            // TODO:
+        addOpenedWindow(value: IWindowComponent) {
+            this.openedWindows.push(value)
         },
         removeOpenedWindow() {
             // TODO:
