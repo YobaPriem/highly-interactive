@@ -10,7 +10,11 @@
             v-if="windowComponent.icon"
             :icon-code="windowComponent.icon"
         />
-        {{ windowComponent.title }}
+        <span
+            class="text-task-bar"
+        >
+            {{ windowComponent.title }}
+        </span>
     </BaseButton>
 </template>
 

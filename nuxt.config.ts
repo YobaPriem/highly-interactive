@@ -27,7 +27,7 @@ export default defineNuxtConfig({
       createSvgIconsPlugin({
         iconDirs: [path.resolve(process.cwd(), 'assets/icons')],
         symbolId: 'icon-[dir]-[name]',
-        inject: 'body-first'
+        inject: 'body-first',
       }),
     ]
   }

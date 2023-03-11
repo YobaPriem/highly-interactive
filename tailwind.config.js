@@ -31,11 +31,15 @@ module.exports = {
     fontSize: {
       'title-bar': [
         '11px', '12px'
+      ],
+      'task-bar': [
+        '11px', '16px'
       ]
     },
     boxShadow: {
       'base': 'inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff',
-      'base-active': 'inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey'
+      'base-active': 'inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey',
+      'base-status': 'inset -1px -1px 0px #DFDFDF, inset 1px 1px 0px #808080'
     }
   },
   plugins: [],
