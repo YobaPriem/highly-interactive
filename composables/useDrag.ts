@@ -1,9 +1,11 @@
 const useDrag = (options: {
     point: HTMLElement,
-    target?: HTMLElement
+    target?: HTMLElement,
+    direction: 'horizontal' | 'vertical' | 'both'
 }) => {
     const dragPoint = options.point
     const dragTarget = options.target ?? dragPoint
+    const direction = options.direction
     let started = false
 
     const posValues = {
@@ -15,6 +17,8 @@ const useDrag = (options: {
         deltaY: 0,
     }
 
+    console.log(dragPoint)
+    console.log(dragTarget)
 
     const dragStartHandler = (e: TouchEvent | MouseEvent) => {
         if (e.target as HTMLElement !== dragPoint) return void 0
@@ -58,8 +62,14 @@ const useDrag = (options: {
     
         posValues.deltaX = posValues.currentX - posValues.startX
         posValues.deltaY = posValues.currentY - posValues.startY
-    
-        dragTarget.style.transform = "translate3d(" + posValues.deltaX + "px, " + posValues.deltaY + "px, 0)"
+        
+        if (direction === 'both') {
+            dragTarget.style.transform = "translate3d(" + posValues.deltaX + "px, " + posValues.deltaY + "px, 0)"
+        } else if (direction === 'vertical') {
+            dragTarget.style.transform = "translateY(" + posValues.deltaY + "px)"
+        } else if (direction === 'horizontal') {
+            dragTarget.style.transform = "translateX(" + posValues.deltaX + "px)"
+        }
     }
     
     const dragEndHandler = (e: TouchEvent | MouseEvent) => {

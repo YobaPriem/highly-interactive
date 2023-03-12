@@ -4,11 +4,16 @@
     >
         <TheTaskBarStart/> 
         <TheTaskBarQuickLaunch/>
-        <TaskBarWindow
-            v-for="window in taskBarStore.openedWindows"
-            :key="window.uid"
-            :window-component="window"
-        />
+        <div
+            class="grow flex items-stretch"
+        >
+            <TaskBarWindow
+                v-for="window in taskBarStore.openedWindows"
+                :key="window.uid"
+                :window-component="window"
+            />
+        </div>
+        <TheTaskBarTray />
     </header>
 </template>
 

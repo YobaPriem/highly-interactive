@@ -39,7 +39,11 @@ module.exports = {
     boxShadow: {
       'base': 'inset -1px -1px #0a0a0a,inset 1px 1px #dfdfdf,inset -2px -2px grey,inset 2px 2px #fff',
       'base-active': 'inset -1px -1px #fff,inset 1px 1px #0a0a0a,inset -2px -2px #dfdfdf,inset 2px 2px grey',
-      'base-status': 'inset -1px -1px 0px #DFDFDF, inset 1px 1px 0px #808080'
+      'base-status': 'inset -1px -1px 0px #DFDFDF, inset 1px 1px 0px #808080',
+      'base-checkbox': 'inset -1px -1px 0px #FFFFFF, inset 1px 1px 0px #808080, inset -2px -2px 0px #DFDFDF, inset 2px 2px 0px #0A0A0A',
+      'base-slider-track': '0px 1px 0px #FFFFFF, inset 1px 1px 0px #B8B8B8, inset -1px -1px 0px #757575, inset 0px 1px 0px #9F9F9F',
+      'base-slider-handle-horizontal': 'inset -1px -1px 0px #000000, inset -1px -1px 0px #7B7D83, inset 1px -1px 0px #FFFFFF, inset 0px 1px 0px #FFFFFF',
+      'base-slider-handle-vertical': 'inset -1px -1px 0px #0A0A0A, inset 1px 1px 0px #FFFFFF, inset -2px -2px 0px #808080'
     }
   },
   plugins: [],

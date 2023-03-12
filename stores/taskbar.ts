@@ -6,6 +6,7 @@ export const useTaskBarStore = defineStore('taskbar', {
         // TODO: дотипизировать
         openedWindows: [] as IWindowComponent[],
         soundLevel: 100,
+        soundLevelBeforeMute: 100
     }),
     actions: {
         setSoundLevel(value: number) {
@@ -13,6 +14,15 @@ export const useTaskBarStore = defineStore('taskbar', {
             if (value > 100) value = 100
 
             this.soundLevel = value
+        },
+        toggleMuteSoundLevel(value: boolean) {
+            if (value) {
+                this.soundLevelBeforeMute = this.soundLevel
+
+                this.soundLevel = 0
+            } else {
+                this.soundLevel = this.soundLevelBeforeMute
+            }
         },
         addOpenedWindow(value: IWindowComponent) {
             this.openedWindows.push(value)

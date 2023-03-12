@@ -1,6 +1,6 @@
 <template>
     <svg
-        class="w-4 h-[0.875rem]"
+        class="w-4 h-4"
     >
         <use :href="`#${iconCode}`"></use>
     </svg>

@@ -71,7 +71,8 @@ onMounted(() => {
     if (baseTitleBar.value && baseTitleBar.value.self && self.value) {
         useDrag({
             point: baseTitleBar.value.self,
-            target: self.value
+            target: self.value,
+            direction: 'both'
         })
     }
 
