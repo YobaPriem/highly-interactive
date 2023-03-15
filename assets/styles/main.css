@@ -13,3 +13,10 @@
 html {
     @apply font-open-sans;
 }
+
+@layer components {
+    .writing-bottom-top {
+        writing-mode: vertical-lr;
+        transform: rotateZ(180deg);
+    }
+}
