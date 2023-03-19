@@ -10,6 +10,9 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt'
   ],
+  plugins: [
+    '~/plugins/vue-click-outside'
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},

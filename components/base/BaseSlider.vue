@@ -1,48 +1,57 @@
 <template>
     <div
-        class="flex relative items-center"
+        class="relative"
         :class="{
-            'min-h-[50px] w-[21px] flex-col': type === 'vertical',
+            'min-h-[50px] w-[21px]': type === 'vertical',
             'min-w-[50px] h-[21px]': type === 'horizontal'
         }"
     >
-        <div
-            class="shadow-base-slider-track"
-            :class="{
-                'h-full w-[3px]': type === 'vertical',
-                'w-full h-[3px]': type === 'horizontal',
-            }"
-        >
-        </div>
-        <div
-            ref="handle"
-            class="absolute bg-base-gray-2 cursor-grab"
-            :class="{
-                'top-0 left-[1px] w-[21px] h-[11px] shadow-base-slider-handle-vertical': type === 'vertical',
-                'left-0 top-[1px] w-[11px] h-[21px] shadow-base-slider-handle-horizontal': type === 'horizontal',
-            }"
-        >
-        </div>
+      <div
+        class="range-input"
+        :class="{
+            'range-input--vertical': type === 'vertical'
+        }"
+        ref="slider"
+      >
+
+      </div>
     </div>
 </template>
 
 <script setup lang="ts">
-defineProps({
+// TODO: на скорую руку накидал, перенести прям подключение к стору в пропсы
+import noUiSlider from 'nouislider'
+import 'nouislider/dist/nouislider.css'
+import { useTaskBarStore } from '~/stores/taskbar'
+
+const store = useTaskBarStore()
+
+const props = defineProps({
     type: {
         required: true,
         type: String as PropType<'vertical' | 'horizontal'>,
     }
 })
 
-const handle = ref<HTMLElement>()
+const slider = ref<HTMLElement>()
 
 onMounted(() => {
-    if (handle.value) {
-        useDrag({
-            point: handle.value,
-            direction: 'vertical'
+    if (slider.value) {
+        const sliderInstance = noUiSlider.create(slider.value, {
+            start: store.soundLevel,
+            orientation: props.type,
+            step: 1,
+            direction: 'rtl',
+            range: {
+                min: 0,
+                max: 100
+            }
+        })
+
+        sliderInstance.on('end', (e) => {
+            const value = Number(e[0])
+            store.setSoundLevel(value)
         })
     }
 })
-
 </script>

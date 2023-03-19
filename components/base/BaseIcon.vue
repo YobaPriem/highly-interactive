@@ -1,6 +1,6 @@
 <template>
     <svg
-        class="w-4 h-4"
+        :class="classes"
     >
         <use :href="`#${iconCode}`"></use>
     </svg>
@@ -11,6 +11,11 @@ defineProps({
     iconCode: {
         required: true,
         type: String,
+    },
+    classes: {
+        required: false,
+        type: String,
+        default: 'w-4 h-4'
     }
 })
 </script>

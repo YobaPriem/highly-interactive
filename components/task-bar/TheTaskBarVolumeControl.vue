@@ -1,10 +1,11 @@
 <template>
     <div
         class="relative"
+        v-click-outside="() => toggleControl(false)"
     >
         <BaseIcon
             icon-code="icon-volume"
-            @click="toggleControl"
+            @click="toggleControl()"
         />
         <div
             v-if="controlOpened"
@@ -36,7 +37,13 @@ const taskBarStore = useTaskBarStore()
 const controlOpened = ref(false)
 const mute = ref(false)
 
-const toggleControl = () => controlOpened.value = !controlOpened.value
+const toggleControl = (forcedValue?: boolean) => {
+    if (forcedValue !== undefined) {
+        controlOpened.value = forcedValue
+    } else {
+        controlOpened.value = !controlOpened.value
+    }
+}
 
 const handleMute = (value: boolean) => {
     mute.value = value
@@ -44,8 +51,6 @@ const handleMute = (value: boolean) => {
 
 watch(mute, (newValue: boolean) => {
     taskBarStore.toggleMuteSoundLevel(newValue)
-    console.log(newValue)
-    console.log(taskBarStore.soundLevel)
 })
 
 </script>

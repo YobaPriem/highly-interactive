@@ -1,6 +1,7 @@
 <template>
     <div
         class="relative"
+        v-click-outside="() => toggleStart(false)"
     >
         <BaseButton
             @click="toggleStart()"
@@ -36,9 +37,7 @@ const toggleStart = (forcedValue?: boolean) => {
   transition: max-height 0.25s ease-in;
   max-height: 999px;
 }
-
 .v-enter-from {
   max-height: 0px;
 }
-
 </style>

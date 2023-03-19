@@ -20,3 +20,32 @@ html {
         transform: rotateZ(180deg);
     }
 }
+
+.range-input.noUi-target {
+    weight: 100%;
+    height: 100%;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+}
+.range-input .noUi-base {
+    display: flex;
+    justify-content: center;
+}
+
+.range-input .noUi-connects {
+    @apply w-[3px] shadow-base-slider-track;
+}
+
+.range-input .noUi-origin {
+    @apply right-1/2
+}
+
+.range-input.noUi-vertical .noUi-handle {
+    @apply w-[21px] h-[11px] shadow-base-slider-handle-vertical right-1/2 bg-base-gray-2 rounded-none border-none -bottom-[6px] translate-x-1/2;
+}
+
+.range-input.noUi-vertical .noUi-handle::after,
+.range-input.noUi-vertical .noUi-handle::before {
+    @apply hidden;
+}

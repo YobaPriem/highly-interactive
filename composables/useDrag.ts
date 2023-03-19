@@ -1,11 +1,21 @@
+interface UseDragThresholds {
+    minX?: number
+    maxX?: number
+    minY?: number
+    maxY?: number
+}
+
 const useDrag = (options: {
     point: HTMLElement,
+    direction: 'horizontal' | 'vertical' | 'both',
     target?: HTMLElement,
-    direction: 'horizontal' | 'vertical' | 'both'
+    thresholds?: UseDragThresholds
 }) => {
     const dragPoint = options.point
     const dragTarget = options.target ?? dragPoint
     const direction = options.direction
+    const thresholds = options.thresholds
+
     let started = false
 
     const posValues = {
@@ -17,11 +27,9 @@ const useDrag = (options: {
         deltaY: 0,
     }
 
-    console.log(dragPoint)
-    console.log(dragTarget)
-
     const dragStartHandler = (e: TouchEvent | MouseEvent) => {
         if (e.target as HTMLElement !== dragPoint) return void 0
+
         started = true
     
         let posX = 0
@@ -63,6 +71,11 @@ const useDrag = (options: {
         posValues.deltaX = posValues.currentX - posValues.startX
         posValues.deltaY = posValues.currentY - posValues.startY
         
+        if (thresholds?.minX !== undefined && posValues.deltaX < thresholds.minX) posValues.deltaX = thresholds.minX
+        if (thresholds?.maxX !== undefined && posValues.deltaX > thresholds.maxX) posValues.deltaX = thresholds.maxX
+        if (thresholds?.minY !== undefined && posValues.deltaY < thresholds.minY) posValues.deltaY = thresholds.minY
+        if (thresholds?.maxY !== undefined && posValues.deltaY > thresholds.maxY) posValues.deltaY = thresholds.maxY
+
         if (direction === 'both') {
             dragTarget.style.transform = "translate3d(" + posValues.deltaX + "px, " + posValues.deltaY + "px, 0)"
         } else if (direction === 'vertical') {
@@ -100,3 +113,4 @@ const useDrag = (options: {
 }
 
 export default useDrag
+export {UseDragThresholds}
