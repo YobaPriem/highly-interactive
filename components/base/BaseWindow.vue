@@ -1,12 +1,12 @@
 <template>
     <div
         ref="self"
-        class="p-[3px] shadow-base absolute flex flex-col min-w-[150px] min-h-[100px] bg-base-gray-2"
+        class="p-[3px] shadow-base absolute flex flex-col min-w-[150px] min-h-[100px] bg-base-gray-2 z-10"
         tabindex="0"
         @focus="setFocus(true)"
         @blur="setFocus(false)"
         :class="{
-            'z-10': window.isFocused
+            'z-20': window.isFocused
         }"
     >
         <BaseTitleBar

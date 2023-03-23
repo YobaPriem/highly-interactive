@@ -29,7 +29,7 @@ module.exports = {
       },
     },
     fontSize: {
-      'title-bar': [
+      'title': [
         '11px', '12px'
       ],
       'task-bar': [

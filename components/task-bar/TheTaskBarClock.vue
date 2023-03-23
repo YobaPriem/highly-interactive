@@ -1,5 +1,5 @@
 <template>
-    <div class="text-title-bar">
+    <div class="text-title">
         {{ formattedDate }}
     </div>
 </template>

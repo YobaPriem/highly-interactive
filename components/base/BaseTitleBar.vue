@@ -11,7 +11,7 @@
             :icon-code="iconCode"
         />
         <div
-            class="text-title-bar font-bold text-white pointer-events-none"
+            class="text-title font-bold text-white pointer-events-none"
         >
             {{ text }}
         </div>

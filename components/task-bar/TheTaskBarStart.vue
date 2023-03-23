@@ -36,6 +36,7 @@ const toggleStart = (forcedValue?: boolean) => {
 .v-enter-active {
   transition: max-height 0.25s ease-in;
   max-height: 999px;
+  overflow: hidden;
 }
 .v-enter-from {
   max-height: 0px;

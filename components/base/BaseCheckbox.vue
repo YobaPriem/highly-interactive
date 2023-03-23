@@ -21,7 +21,7 @@
         >
             <BaseIcon
                 v-if="modelValue"
-                class="
+                classes="
                     absolute
                     top-1/2
                     left-1/2

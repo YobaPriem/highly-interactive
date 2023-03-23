@@ -12,7 +12,7 @@
             class="absolute top-0 right-0 bg-base-gray-2 w-[80px] h-[140px] -translate-y-full shadow-base px-2 pt-[10px] pb-2  flex flex-col items-center"
         >
             <span
-                class="text-title-bar"
+                class="text-title"
             >
                 Volume
             </span>

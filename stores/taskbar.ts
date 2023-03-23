@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { IWindowComponent } from "~/interfaces/window"
-import IStarMenuTreeItem from 'interfaces/start-menu-tree-item'
+import IStarMenuTreeItem from '~~/interfaces/start-menu-tree-item'
 
 export const useTaskBarStore = defineStore('taskbar', {
     state: () => ({
@@ -11,56 +11,91 @@ export const useTaskBarStore = defineStore('taskbar', {
         startMenuTree: [
             {
                 id: '0',
-                title: 'sadasd',
-                iconCode: 'icon-start',
-                // callback: () => void 0
-            },
-            {
-                id: '1',
-                title: 'sadasd',
-                iconCode: 'icon-start',
-                // callback: () => void 0
-            },
-            {
-                id: '2',
-                title: 'sadasd',
-                iconCode: 'icon-start',
-                // callback: () => void 0
-            },
-            {
-                id: '3',
-                title: 'sadasd',
-                iconCode: 'icon-start',
-                // callback: () => void 0
-            },
-            {
-                id: '4',
-                title: 'sadasd',
-                iconCode: 'icon-start',
+                title: 'programms',
+                delimiter: 'none',
                 children: [
                     {
-                        id: '5',
+                        id: '0-0',
                         title: 'sadasd',
                         iconCode: 'icon-start',
-                        children: [
-                            {
-                                id: '3',
-                                title: 'sadasd',
-                                iconCode: 'icon-start',
-                                // callback: () => void 0
-                            }
-                        ]
+                        delimiter: 'none',
+                        children: []
                         // callback: () => void 0
                     },
                     {
-                        id: '6',
+                        id: '0-1',
                         title: 'sadasd',
                         iconCode: 'icon-start',
+                        delimiter: 'none',
+                        children: []
+                        // callback: () => void 0
+                    },
+                    {
+                        id: '0-2',
+                        title: 'sadasd',
+                        iconCode: 'icon-start',
+                        delimiter: 'none',
+                        children: []
+                        // callback: () => void 0
+                    },
+                    {
+                        id: '0-3',
+                        title: 'sadasd',
+                        iconCode: 'icon-start',
+                        delimiter: 'none',
+                        children: []
+                        // callback: () => void 0
+                    },
+                    {
+                        id: '0-4',
+                        title: 'sadasd',
+                        iconCode: 'icon-start',
+                        delimiter: 'none',
+                        children: [
+                            {
+                                id: '0-5',
+                                title: 'sadasd',
+                                iconCode: 'icon-start',
+                                delimiter: 'none',
+                                children: [
+                                    {
+                                        id: '0-7',
+                                        title: 'sadasd',
+                                        iconCode: 'icon-start',
+                                        delimiter: 'none',
+                                        children: []
+                                        // callback: () => void 0
+                                    }
+                                ]
+                                // callback: () => void 0
+                            },
+                            {
+                                id: '0-6',
+                                title: 'sadasd',
+                                iconCode: 'icon-start',
+                                delimiter: 'none',
+                                children: []
+                                // callback: () => void 0
+                            }
+                        ],
                         // callback: () => void 0
                     }
-                ],
-                // callback: () => void 0
-            }
+                ]
+            },
+            {
+                id: '1',
+                title: 'system',
+                delimiter: 'top',
+                children: [
+                    {
+                        id: '1-0',
+                        title: 'shut down',
+                        iconCode: 'icon-start',
+                        children: []
+                        // callback: () => void 0
+                    },
+                ]
+            },
         ] as IStarMenuTreeItem[]
     }),
     actions: {

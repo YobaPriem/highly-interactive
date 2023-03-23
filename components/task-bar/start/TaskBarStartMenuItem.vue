@@ -23,17 +23,17 @@
                 {{ menuItem.title }}
             </div>
             <div
-                v-if="menuItem.children && menuItem.children.length"
+                v-if="menuItem.children.length"
                 class="absolute top-1/2 -translate-y-1/2 right-[6px]"
             >
                 <BaseIcon
-                    class="w-[10px] h-[10px]"
+                    classes="w-[10px] h-[10px]"
                     icon-code="icon-arrow-right"
                 />
             </div>
         </div>
         <TaskBarStartMenuGroup
-            v-if="menuItem.children && menuItem.children.length && isChildrenMenuShowed"
+            v-if="menuItem.children.length && isChildrenMenuShowed"
             :start-menu-tree="menuItem.children"
             :is-children="isChildren"
             class="bg-base-gray-2 absolute top-0 right-0 shadow-base translate-x-full min-w-[150px]"
