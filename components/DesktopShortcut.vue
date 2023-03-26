@@ -1,6 +1,6 @@
 <template>
     <div
-        class="w-[69px] flex flex-col items-center gap-[7px]"
+        class="w-[69px] h-[53px] flex flex-col items-center gap-[7px]"
         @click="toggleFocus(true)"
         v-click-outside="() => toggleFocus(false)"
     >
