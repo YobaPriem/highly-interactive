@@ -8,7 +8,6 @@
             grid-cols-[repeat(auto-fill,_69px)]
             grid-rows-[repeat(auto-fill,_53px)]
             grid-flow-col
-            gap-4
         "
     >
         <div
@@ -27,9 +26,7 @@
             v-for="dummyCellId in dummyCellsNum"
             :key="dummyCellId"
             class="draggable w-[69px] h-[53px]"
-            draggable="true"
         >
-          
         </div>
         <slot
             name="windows"
@@ -61,10 +58,7 @@ const dummyCellsNum = computed(() => {
 
 onMounted(() => {
     if (grid.value) {
-        useDragAndDrop({
-            parentElement: grid.value,
-            targetSelector: '.draggable'
-        })
+        useDragAndDrop(grid.value)
     }
 })
 
