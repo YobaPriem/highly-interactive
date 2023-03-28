@@ -69,7 +69,7 @@ const window = reactive<IWindowComponent>({
 
 onMounted(() => {
     if (baseTitleBar.value && baseTitleBar.value.self && self.value) {
-        useDrag({
+        useMove({
             point: baseTitleBar.value.self,
             target: self.value,
             direction: 'both'

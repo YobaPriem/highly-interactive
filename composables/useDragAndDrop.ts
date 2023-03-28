@@ -7,10 +7,6 @@ const useDragAndDrop = (parentElement: HTMLElement) => {
         if (!e.dataTransfer || !target) return void 0
 
         draggedElement = target
-        
-        console.group('drag start')
-        console.log(draggedElement)
-        console.groupEnd()
 
         e.dataTransfer.effectAllowed = 'move'
     }
@@ -26,13 +22,15 @@ const useDragAndDrop = (parentElement: HTMLElement) => {
     }
 
     const handleDrop = (e: DragEvent) => {
-        const target = e.target as HTMLElement
-        const closestDraggable = target.closest('.draggable')
+        const closestDraggable = (e.target as HTMLElement).closest('.draggable')
 
         if (!draggedElement || !closestDraggable || closestDraggable === draggedElement) return void 0
-        console.log(target)
-        console.log(draggedElement)
-        target.replaceWith(closestDraggable, draggedElement);
+
+        const tempNode = document.createElement('div')
+
+        draggedElement.before(tempNode)
+        closestDraggable.before(draggedElement)
+        tempNode.replaceWith(closestDraggable)
     }
 
     parentElement.addEventListener('dragstart', handleDragStart, false)

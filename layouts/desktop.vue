@@ -5,8 +5,8 @@
             w-full
             h-full
             grid
-            grid-cols-[repeat(auto-fill,_69px)]
-            grid-rows-[repeat(auto-fill,_53px)]
+            grid-cols-[repeat(auto-fill,_85px)]
+            grid-rows-[repeat(auto-fill,_69px)]
             grid-flow-col
         "
     >
@@ -25,7 +25,7 @@
         <div
             v-for="dummyCellId in dummyCellsNum"
             :key="dummyCellId"
-            class="draggable w-[69px] h-[53px]"
+            class="draggable box-content w-[69px] h-[53px] p-2"
         >
         </div>
         <slot
@@ -49,7 +49,7 @@ const grid = ref<HTMLElement>()
 
 const dummyCellsNum = computed(() => {
     if (!process.client || !grid.value) return 0
-    
+
     const colsNum = Math.floor(grid.value.offsetWidth / (69 + 16))
     const rowsNum = Math.floor(grid.value.offsetHeight / (53 + 16))
 

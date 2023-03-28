@@ -1,18 +1,18 @@
-interface UseDragThresholds {
+interface UseMoveThresholds {
     minX?: number
     maxX?: number
     minY?: number
     maxY?: number
 }
 
-const useDrag = (options: {
+const useMove = (options: {
     point: HTMLElement,
     direction: 'horizontal' | 'vertical' | 'both',
     target?: HTMLElement,
-    thresholds?: UseDragThresholds
+    thresholds?: UseMoveThresholds
 }) => {
-    const dragPoint = options.point
-    const dragTarget = options.target ?? dragPoint
+    const movePoint = options.point
+    const moveTarget = options.target ?? movePoint
     const direction = options.direction
     const thresholds = options.thresholds
 
@@ -27,8 +27,8 @@ const useDrag = (options: {
         deltaY: 0,
     }
 
-    const dragStartHandler = (e: TouchEvent | MouseEvent) => {
-        if (e.target as HTMLElement !== dragPoint) return void 0
+    const moveStartHandler = (e: TouchEvent | MouseEvent) => {
+        if (e.target as HTMLElement !== movePoint) return void 0
 
         started = true
     
@@ -49,7 +49,7 @@ const useDrag = (options: {
         attachListeners()
     }
     
-    const dragProccessingHandler = (e: TouchEvent | MouseEvent) => {
+    const moveProccessingHandler = (e: TouchEvent | MouseEvent) => {
         if (!started) return void 0
     
         e.preventDefault()
@@ -77,16 +77,16 @@ const useDrag = (options: {
         if (thresholds?.maxY !== undefined && posValues.deltaY > thresholds.maxY) posValues.deltaY = thresholds.maxY
 
         if (direction === 'both') {
-            dragTarget.style.transform = "translate3d(" + posValues.deltaX + "px, " + posValues.deltaY + "px, 0)"
+            moveTarget.style.transform = "translate3d(" + posValues.deltaX + "px, " + posValues.deltaY + "px, 0)"
         } else if (direction === 'vertical') {
-            dragTarget.style.transform = "translateY(" + posValues.deltaY + "px)"
+            moveTarget.style.transform = "translateY(" + posValues.deltaY + "px)"
         } else if (direction === 'horizontal') {
-            dragTarget.style.transform = "translateX(" + posValues.deltaX + "px)"
+            moveTarget.style.transform = "translateX(" + posValues.deltaX + "px)"
         }
     }
     
-    const dragEndHandler = (e: TouchEvent | MouseEvent) => {
-        if (!started || e.target as HTMLElement !== dragPoint) return void 0
+    const moveEndHandler = (e: TouchEvent | MouseEvent) => {
+        if (!started || e.target as HTMLElement !== movePoint) return void 0
         started = false
         posValues.startX = posValues.currentX
         posValues.startY = posValues.currentY
@@ -95,22 +95,22 @@ const useDrag = (options: {
     }
 
     const attachListeners = () => {
-        document.addEventListener('mousemove', dragProccessingHandler)
-        document.addEventListener('mouseup', dragEndHandler)
-        document.addEventListener('touchmove', dragProccessingHandler)
-        document.addEventListener('touchend', dragEndHandler)
+        document.addEventListener('mousemove', moveProccessingHandler)
+        document.addEventListener('mouseup', moveEndHandler)
+        document.addEventListener('touchmove', moveProccessingHandler)
+        document.addEventListener('touchend', moveEndHandler)
     }
 
     const detachListeners = () => {
-        document.removeEventListener('mousemove', dragProccessingHandler)
-        document.removeEventListener('mouseup', dragEndHandler)
-        document.removeEventListener('touchmove', dragProccessingHandler)
-        document.removeEventListener('touchend', dragEndHandler)
+        document.removeEventListener('mousemove', moveProccessingHandler)
+        document.removeEventListener('mouseup', moveEndHandler)
+        document.removeEventListener('touchmove', moveProccessingHandler)
+        document.removeEventListener('touchend', moveEndHandler)
     }
     
-    document.addEventListener('mousedown', dragStartHandler)
-    document.addEventListener('touchstart', dragStartHandler)
+    document.addEventListener('mousedown', moveStartHandler)
+    document.addEventListener('touchstart', moveStartHandler)
 }
 
-export default useDrag
-export {UseDragThresholds}
+export default useMove
+export {UseMoveThresholds}

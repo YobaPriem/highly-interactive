@@ -11,6 +11,7 @@
             <DesktopShortcut
                 :title="title"
                 :icon-code="iconCode"
+                @click="test(shortcut.id)"
             />
         </template>
         <template
@@ -67,4 +68,9 @@ const shortcutsList: IShortcut[] = [
         iconCode: 'icon-start'
     }
 ]
+
+const test = (id: string) => {
+    console.log(id)
+}
+
 </script>
