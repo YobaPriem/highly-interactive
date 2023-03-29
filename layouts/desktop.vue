@@ -2,6 +2,7 @@
     <div
         ref="grid"
         class="
+            drop-container
             w-full
             h-full
             grid
@@ -11,7 +12,7 @@
         "
     >
         <div
-            class="draggable"
+            class="draggable bg-black"
             v-for="shortcut in shortcutsList"
             :key="shortcut.id"
             draggable="true"
@@ -25,7 +26,7 @@
         <div
             v-for="dummyCellId in dummyCellsNum"
             :key="dummyCellId"
-            class="draggable box-content w-[69px] h-[53px] p-2"
+            class="dummy bg-black box-content w-[69px] h-[53px] p-2"
         >
         </div>
         <slot
@@ -57,9 +58,9 @@ const dummyCellsNum = computed(() => {
 })
 
 onMounted(() => {
-    if (grid.value) {
-        useDragAndDrop(grid.value)
-    }
+    useDragAndDropShortcut({
+        dummyClasslist: 'dummy bg-black box-content w-[69px] h-[53px] p-2'
+    })
 })
 
 </script>

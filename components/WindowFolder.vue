@@ -1,8 +1,6 @@
 <template>
     <BaseWindow>
-        <WindowFolderContent
-            class="grow"
-        />
+        <WindowFolderContent/>
         <WindowFolderInfo/>
     </BaseWindow>
 </template>

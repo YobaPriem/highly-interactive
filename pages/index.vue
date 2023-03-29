@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { IShortcut } from '~~/interfaces/shortcut'
+import { IShortcut } from '~/interfaces/shortcut'
 
 const shortcutsList: IShortcut[] = [
     {
