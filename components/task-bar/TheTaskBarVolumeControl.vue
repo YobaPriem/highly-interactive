@@ -4,7 +4,7 @@
         v-click-outside="() => toggleControl(false)"
     >
         <BaseIcon
-            icon-code="icon-volume"
+            icon-code="icon-small-volume"
             @click="toggleControl()"
         />
         <div

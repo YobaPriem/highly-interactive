@@ -1,8 +1,7 @@
 <template>
   <div
-    class="w-screen h-screen overflow-hidden scale-100 bg-classic-teal select-none"
+    class="w-screen h-screen overflow-hidden scale-100 select-none"
   >
     <NuxtPage/>
-    <TheTaskBar/>
   </div>
 </template>

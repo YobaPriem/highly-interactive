@@ -2,6 +2,7 @@
     <div
         ref="grid"
         class="
+        bg-classic-teal
             drop-container
             w-full
             h-full
@@ -12,7 +13,7 @@
         "
     >
         <div
-            class="draggable bg-black"
+            class="draggable"
             v-for="shortcut in shortcutsList"
             :key="shortcut.id"
             draggable="true"
@@ -26,19 +27,19 @@
         <div
             v-for="dummyCellId in dummyCellsNum"
             :key="dummyCellId"
-            class="dummy bg-black box-content w-[69px] h-[53px] p-2"
+            class="dummy w-[85px] h-[70px]"
         >
         </div>
         <slot
             name="windows"
         />
     </div>
+    <TheTaskBar/>
 </template>
 
 <script setup lang="ts">
 import { IShortcut } from '~/interfaces/shortcut'
 
-// TODO: почему-то type: [] as ... кидает warning
 const props = defineProps({
     shortcutsList: {
         required: true,
@@ -51,16 +52,17 @@ const grid = ref<HTMLElement>()
 const dummyCellsNum = computed(() => {
     if (!process.client || !grid.value) return 0
 
-    const colsNum = Math.floor(grid.value.offsetWidth / (69 + 16))
-    const rowsNum = Math.floor(grid.value.offsetHeight / (53 + 16))
+    const colsNum = Math.floor(grid.value.offsetWidth / 85)
+    const rowsNum = Math.floor(grid.value.offsetHeight / 65)
 
     return colsNum * rowsNum - props.shortcutsList.length
 })
 
 onMounted(() => {
     useDragAndDropShortcut({
-        dummyClasslist: 'dummy bg-black box-content w-[69px] h-[53px] p-2'
+        dummyClasslist: 'dummy w-[85px] h-[70px]'
     })
+    useCustomRightClick()
 })
 
 </script>

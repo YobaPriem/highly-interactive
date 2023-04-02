@@ -7,7 +7,7 @@
             @click="toggleStart()"
         >
             <BaseIcon
-                icon-code="icon-start"
+                icon-code="icon-small-start"
             />
             <span class="uppercase text-task-bar font-bold ml-1">Start</span>
         </BaseButton>

@@ -1,6 +1,6 @@
 import { defineStore } from "pinia"
 import { IWindowComponent } from "~/interfaces/window"
-import IStarMenuTreeItem from '~~/interfaces/start-menu-tree-item'
+import IStarMenuTreeItem from '~/interfaces/start-menu-tree-item'
 
 export const useTaskBarStore = defineStore('taskbar', {
     state: () => ({
@@ -20,7 +20,6 @@ export const useTaskBarStore = defineStore('taskbar', {
                         iconCode: 'icon-start',
                         delimiter: 'none',
                         children: []
-                        // callback: () => void 0
                     },
                     {
                         id: '0-1',
@@ -28,7 +27,6 @@ export const useTaskBarStore = defineStore('taskbar', {
                         iconCode: 'icon-start',
                         delimiter: 'none',
                         children: []
-                        // callback: () => void 0
                     },
                     {
                         id: '0-2',
@@ -36,7 +34,6 @@ export const useTaskBarStore = defineStore('taskbar', {
                         iconCode: 'icon-start',
                         delimiter: 'none',
                         children: []
-                        // callback: () => void 0
                     },
                     {
                         id: '0-3',
@@ -44,7 +41,6 @@ export const useTaskBarStore = defineStore('taskbar', {
                         iconCode: 'icon-start',
                         delimiter: 'none',
                         children: []
-                        // callback: () => void 0
                     },
                     {
                         id: '0-4',
@@ -64,10 +60,8 @@ export const useTaskBarStore = defineStore('taskbar', {
                                         iconCode: 'icon-start',
                                         delimiter: 'none',
                                         children: []
-                                        // callback: () => void 0
                                     }
                                 ]
-                                // callback: () => void 0
                             },
                             {
                                 id: '0-6',
@@ -75,10 +69,8 @@ export const useTaskBarStore = defineStore('taskbar', {
                                 iconCode: 'icon-start',
                                 delimiter: 'none',
                                 children: []
-                                // callback: () => void 0
                             }
                         ],
-                        // callback: () => void 0
                     }
                 ]
             },
@@ -90,9 +82,8 @@ export const useTaskBarStore = defineStore('taskbar', {
                     {
                         id: '1-0',
                         title: 'shut down',
-                        iconCode: 'icon-start',
+                        iconCode: 'icon-large-shutdown',
                         children: []
-                        // callback: () => void 0
                     },
                 ]
             },
@@ -113,6 +104,9 @@ export const useTaskBarStore = defineStore('taskbar', {
             } else {
                 this.soundLevel = this.soundLevelBeforeMute
             }
+        },
+        test() {
+            console.log(1231231)
         },
         addOpenedWindow(value: IWindowComponent) {
             this.openedWindows.push(value)

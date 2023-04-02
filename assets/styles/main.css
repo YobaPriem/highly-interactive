@@ -49,3 +49,7 @@ html {
 .range-input.noUi-vertical .noUi-handle::before {
     @apply hidden;
 }
+
+.drop-container--window .shortcut span {
+    @apply text-black;
+}
