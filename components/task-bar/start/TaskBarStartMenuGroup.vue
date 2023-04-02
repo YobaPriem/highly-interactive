@@ -1,19 +1,21 @@
 <template>
     <div
-        class="px-[3px]"
+        :class="{
+            'p-[3px]': isChildren
+        }"
     >
         <BaseDelimiter
-            v-if="delimiter === 'top'"
+            v-if="group.delimiter === 'top'"
             type="horizontal"
         />
         <TaskBarStartMenuItem
-            v-for="menuItem in startMenuTree"
+            v-for="menuItem in group.children"
             :key="menuItem.id"
             :menu-item="menuItem"
-            :is-chilren="isChildren"
+            :is-children="isChildren"
         />
         <BaseDelimiter
-            v-if="delimiter === 'bottom'"
+            v-if="group.delimiter === 'bottom'"
             type="horizontal"
         />
     </div>
@@ -24,19 +26,14 @@ import IStarMenuTreeItem from 'interfaces/start-menu-tree-item'
 import { PropType } from 'vue'
 
 defineProps({
-    startMenuTree: {
+    group: {
         required: true,
-        type: [] as PropType<IStarMenuTreeItem[]>
+        type: Object as PropType<IStarMenuTreeItem>
     },
     isChildren: {
         required: false,
         type: Boolean,
         default: false
     },
-    delimiter: {
-        required: false,
-        type: String as PropType<'top' | 'bottom' | 'none'>,
-        default: 'none'
-    }
 })
 </script>

@@ -2,23 +2,25 @@
     <div
         class="relative"
     >
+        <BaseDelimiter
+            v-if="menuItem.delimiter === 'top'"
+            type="horizontal"
+        />
         <div
             class="flex items-center"
             @click="toggleChildrenMenu()"
         >
             <div
                 v-if="!menuItem.iconCode"
-                class="w-12 h-12"
-            >
-
-            </div>
+                :class="!isChildren ? 'w-12 h-12 p-2' : 'w-[22px] h-[22px] p-[3px]'"
+            ></div>
             <BaseIcon
                 v-else
-                classes="w-12 h-12"
+                :classes="!isChildren ? 'w-12 h-12 p-2' : 'w-[22px] h-[22px] p-[3px]'"
                 :icon-code="menuItem.iconCode"
             />
             <div
-                class="ml-[3px] text-[13px] leading-3"
+                :class="!isChildren ? 'ml-[3px] text-[13px] leading-3' : 'ml-1 text-title'"
             >
                 {{ menuItem.title }}
             </div>
@@ -34,9 +36,13 @@
         </div>
         <TaskBarStartMenuGroup
             v-if="menuItem.children.length && isChildrenMenuShowed"
-            :start-menu-tree="menuItem.children"
-            :is-children="isChildren"
+            :group="menuItem"
+            :is-children="true"
             class="bg-base-gray-2 absolute top-0 right-0 shadow-base translate-x-full min-w-[150px]"
+        />
+        <BaseDelimiter
+            v-if="menuItem.delimiter === 'bottom'"
+            type="horizontal"
         />
     </div>
 </template>
@@ -44,7 +50,7 @@
 <script setup lang="ts">
 import IStarMenuTreeItem from 'interfaces/start-menu-tree-item'
 
-const props = defineProps({
+defineProps({
     menuItem: {
         required: true,
         type: Object as PropType<IStarMenuTreeItem>

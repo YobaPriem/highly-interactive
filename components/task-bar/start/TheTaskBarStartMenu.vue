@@ -7,12 +7,11 @@
         >
             ШINDOWS 99
         </div>
-        <div class="w-full">
+        <div class="w-full p-[3px]">
             <TaskBarStartMenuGroup
                 v-for="group in store.startMenuTree"
-                :start-menu-tree="group.children"
+                :group="group"
                 :is-children="false"
-                :delimiter="group.delimiter"
             />
         </div>
     </div>

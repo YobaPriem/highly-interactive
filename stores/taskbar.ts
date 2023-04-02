@@ -11,67 +11,73 @@ export const useTaskBarStore = defineStore('taskbar', {
         startMenuTree: [
             {
                 id: '0',
-                title: 'programms',
+                title: 'utils',
                 delimiter: 'none',
                 children: [
                     {
-                        id: '0-0',
-                        title: 'sadasd',
-                        iconCode: 'icon-start',
+                        id: '0-1',
+                        title: 'Documents',
+                        iconCode: 'icon-large-my-documents',
                         delimiter: 'none',
-                        children: []
+                        children: [
+                            {
+                                id: '0-2',
+                                title: 'My documents',
+                                iconCode: 'icon-large-my-documents',
+                                delimiter: 'bottom',
+                                children: []
+                            },
+                            {
+                                id: '0-3',
+                                title: 'do.txt',
+                                iconCode: 'icon-large-txt',
+                                delimiter: 'none',
+                                children: []
+                            },
+                            {
+                                id: '0-4',
+                                title: 'not.txt',
+                                iconCode: 'icon-large-txt',
+                                delimiter: 'none',
+                                children: []
+                            },
+                            {
+                                id: '0-5',
+                                title: 'touch.txt',
+                                iconCode: 'icon-large-txt',
+                                delimiter: 'none',
+                                children: []
+                            },
+                            {
+                                id: '0-6',
+                                title: 'this.txt',
+                                iconCode: 'icon-large-txt',
+                                delimiter: 'none',
+                                children: []
+                            }
+                        ],
                     },
                     {
-                        id: '0-1',
-                        title: 'sadasd',
-                        iconCode: 'icon-start',
+                        id: '0-2',
+                        title: 'Documents',
+                        iconCode: 'icon-large-my-documents',
                         delimiter: 'none',
                         children: []
                     },
                     {
                         id: '0-2',
-                        title: 'sadasd',
-                        iconCode: 'icon-start',
+                        title: 'Documents',
+                        iconCode: 'icon-large-my-documents',
                         delimiter: 'none',
                         children: []
                     },
                     {
-                        id: '0-3',
-                        title: 'sadasd',
-                        iconCode: 'icon-start',
+                        id: '0-2',
+                        title: 'Documents',
+                        iconCode: 'icon-large-my-documents',
                         delimiter: 'none',
                         children: []
                     },
-                    {
-                        id: '0-4',
-                        title: 'sadasd',
-                        iconCode: 'icon-start',
-                        delimiter: 'none',
-                        children: [
-                            {
-                                id: '0-5',
-                                title: 'sadasd',
-                                iconCode: 'icon-start',
-                                delimiter: 'none',
-                                children: [
-                                    {
-                                        id: '0-7',
-                                        title: 'sadasd',
-                                        iconCode: 'icon-start',
-                                        delimiter: 'none',
-                                        children: []
-                                    }
-                                ]
-                            },
-                            {
-                                id: '0-6',
-                                title: 'sadasd',
-                                iconCode: 'icon-start',
-                                delimiter: 'none',
-                                children: []
-                            }
-                        ],
-                    }
                 ]
             },
             {
