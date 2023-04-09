@@ -8,9 +8,9 @@
             ШINDOWS 99
         </div>
         <div class="w-full p-[3px]">
-            <TaskBarStartMenuGroup
-                v-for="group in store.startMenuTree"
-                :group="group"
+            <TaskBarStartMenuItem
+                v-for="group in store.startTree"
+                :menu-item="group"
                 :is-children="false"
             />
         </div>
@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { useTaskBarStore } from '~/stores/taskbar'
+import { useFileSystemStore } from '~/stores/filesystem'
 
-const store = useTaskBarStore()
+const store = useFileSystemStore()
 </script>

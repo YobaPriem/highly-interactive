@@ -3,8 +3,6 @@ const useResize = (options: {
     target?: HTMLElement,
     direction: 'vertical' | 'horizontal' | 'both'
 }) => {
-    // TODO: Do we need touch listeners?
-
     const dragPoint = options.point
     const dragTarget = options.target ?? dragPoint
     const direction = options.direction
@@ -88,19 +86,14 @@ const useResize = (options: {
     const attachListeners = () => {
         document.addEventListener('mousemove', dragProccessingHandler)
         document.addEventListener('mouseup', dragEndHandler)
-        // document.addEventListener('touchmove', dragProccessingHandler)
-        // document.addEventListener('touchend', dragEndHandler)
     }
 
     const detachListeners = () => {
         document.removeEventListener('mousemove', dragProccessingHandler)
         document.removeEventListener('mouseup', dragEndHandler)
-        // document.removeEventListener('touchmove', dragProccessingHandler)
-        // document.removeEventListener('touchend', dragEndHandler)
     }
     
     document.addEventListener('mousedown', dragStartHandler)
-    // document.addEventListener('touchstart', dragStartHandler)
 }
 
 export default useResize

@@ -40,6 +40,10 @@ const props = defineProps({
         required: false,
         type: Boolean,
         default: true
+    },
+    title: {
+        required: true,
+        type: String
     }
 })
 
@@ -48,7 +52,6 @@ const instance = getCurrentInstance()
 const baseTitleBar = ref<InstanceType<typeof BaseTitleBar>>()
 const self = ref<HTMLElement>()
 const resizer = ref<HTMLElement>()
-const title = 'test fix c'
 
 const setFocus = (value: boolean) => {
     window.isFocused = value
@@ -60,7 +63,7 @@ const setStatus = (value: WindowStatus) => {
 
 const window = reactive<IWindowComponent>({
     uid: instance?.uid ?? 0,
-    title: title,
+    title: props.title,
     status: 'opened',
     isFocused: false,
     setStatus,

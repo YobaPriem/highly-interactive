@@ -26,10 +26,9 @@
 </template>
 
 <script setup lang="ts">
-import 'virtual:svg-icons-register'
 const self = ref<HTMLElement>()
 
-const props = defineProps({
+defineProps({
     text: {
         required: true,
         type: String,

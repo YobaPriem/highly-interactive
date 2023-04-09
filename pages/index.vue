@@ -1,27 +1,30 @@
 <template>
     <NuxtLayout
         name="desktop"
-        :shortcuts-list="desktopStore.shortcutsList"
+        :desktop-tree="filesystemStore.desktopTree"
     >
         <template
-            v-for="shortcut in desktopStore.shortcutsList"
-            #[`shortcut-${shortcut.id}`]="{ title, iconCode }"
+            v-for="shortcut in filesystemStore.desktopTree"
+            #[`shortcut-${shortcut.id}`]="{ shortcut }"
         >
             <DesktopShortcut
-                :title="title"
-                :icon-code="iconCode"
+                :shortcut="shortcut"
             />
         </template>
         <template
             #windows
         >
-            <WindowFolder/>
-            <WindowFolder/>
+            <div
+                id="windows"
+            >
+
+            </div>
         </template>
     </NuxtLayout>
 </template>
 
 <script setup lang="ts">
-import { useDesktopStore } from '~/stores/desktop'
-const desktopStore = useDesktopStore()
+import { useFileSystemStore } from '~~/stores/filesystem'
+
+const filesystemStore = useFileSystemStore()
 </script>

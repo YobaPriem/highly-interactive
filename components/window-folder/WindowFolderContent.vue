@@ -4,10 +4,14 @@
             bg-white
             shadow-base-active
             grow
+            flex
+            flex-wrap
+            content-start
             drop-container
             drop-container--window
+            overflow-auto
         "
     >
-        
+        <slot/>
     </div>
 </template>

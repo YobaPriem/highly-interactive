@@ -53,3 +53,7 @@ html {
 .drop-container--window .shortcut span {
     @apply text-black;
 }
+
+.drop-container--window .shortcut--focused span {
+    @apply text-white;
+}

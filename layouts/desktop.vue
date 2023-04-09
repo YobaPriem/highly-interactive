@@ -12,18 +12,12 @@
             grid-flow-col
         "
     >
-        <div
-            class="draggable"
-            v-for="shortcut in shortcutsList"
+        <slot
+            v-for="shortcut in desktopTree"
             :key="shortcut.id"
-            draggable="true"
-        >
-            <slot
-                :name="`shortcut-${shortcut.id}`"
-                :title="shortcut.title"
-                :icon-code="shortcut.iconCode"
-            />
-        </div>
+            :name="`shortcut-${shortcut.id}`"
+            :shortcut="shortcut"
+        />
         <div
             v-for="dummyCellId in dummyCellsNum"
             :key="dummyCellId"
@@ -38,12 +32,12 @@
 </template>
 
 <script setup lang="ts">
-import { IShortcut } from '~/interfaces/shortcut'
+import { IFilesystemItem } from '~~/interfaces/filesystem-item'
 
 const props = defineProps({
-    shortcutsList: {
+    desktopTree: {
         required: true,
-        type: Array as PropType<IShortcut[]>
+        type: Array as PropType<IFilesystemItem[]>
     }
 })
 
@@ -55,7 +49,7 @@ const dummyCellsNum = computed(() => {
     const colsNum = Math.floor(grid.value.offsetWidth / 85)
     const rowsNum = Math.floor(grid.value.offsetHeight / 65)
 
-    return colsNum * rowsNum - props.shortcutsList.length
+    return colsNum * rowsNum - props.desktopTree.length
 })
 
 onMounted(() => {

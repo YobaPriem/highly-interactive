@@ -23,6 +23,11 @@ export default defineNuxtConfig({
     {
       path: '~/components/',
       pathPrefix: false
+    },
+    {
+      path: '~/components/global',
+      pathPrefix: false,
+      global: true
     }
   ],
   vite: {
