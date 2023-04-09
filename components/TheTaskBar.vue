@@ -8,9 +8,9 @@
             class="grow flex items-stretch"
         >
             <TaskBarWindow
-                v-for="window in taskBarStore.openedWindows"
-                :key="window.uid"
-                :window-component="window"
+                v-for="shortcut in taskBarStore.openedShortcuts"
+                :key="shortcut.id"
+                :shortcut="shortcut"
             />
         </div>
         <TheTaskBarTray />

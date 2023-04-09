@@ -1,10 +1,10 @@
 import { defineStore } from "pinia"
-import { IWindowComponent } from "~/interfaces/window"
+import { IFilesystemItem } from '~/interfaces/filesystem-item'
 
 export const useTaskBarStore = defineStore('taskbar', {
     state: () => ({
         // TODO: дотипизировать
-        openedWindows: [] as IWindowComponent[],
+        openedShortcuts: [] as IFilesystemItem[],
         soundLevel: 100,
         soundLevelBeforeMute: 100,
     }),
@@ -27,8 +27,8 @@ export const useTaskBarStore = defineStore('taskbar', {
         test() {
             console.log(1231231)
         },
-        addOpenedWindow(value: IWindowComponent) {
-            this.openedWindows.push(value)
+        addOpenedShortcut(value: IFilesystemItem) {
+            this.openedShortcuts.push(value)
         },
         removeOpenedWindow() {
             // TODO:

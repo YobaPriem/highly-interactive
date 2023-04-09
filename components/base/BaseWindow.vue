@@ -6,13 +6,13 @@
         @focus="setFocus(true)"
         @blur="setFocus(false)"
         :class="{
-            'z-20': window.isFocused
+            'z-20': shortcut.attributes.focused
         }"
     >
         <BaseTitleBar
             ref="baseTitleBar"
-            :text="title"
-            :is-focused="window.isFocused"
+            :title="shortcut.attributes.title"
+            :focused="shortcut.attributes.focused"
         >
         </BaseTitleBar>
         <slot/>
@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { IWindowComponent, WindowStatus } from '~/interfaces/window'
+import { IFilesystemItem } from '~/interfaces/filesystem-item'
 import { useTaskBarStore } from '~/stores/taskbar'
 import BaseTitleBar from './BaseTitleBar.vue'
 
@@ -41,34 +41,20 @@ const props = defineProps({
         type: Boolean,
         default: true
     },
-    title: {
+    shortcut: {
         required: true,
-        type: String
-    }
+        type: Object as PropType<IFilesystemItem>
+    },
 })
 
 const store = useTaskBarStore()
-const instance = getCurrentInstance()
 const baseTitleBar = ref<InstanceType<typeof BaseTitleBar>>()
 const self = ref<HTMLElement>()
 const resizer = ref<HTMLElement>()
 
 const setFocus = (value: boolean) => {
-    window.isFocused = value
+    props.shortcut.attributes.focused = value
 }
-
-const setStatus = (value: WindowStatus) => {
-    window.status = value
-}
-
-const window = reactive<IWindowComponent>({
-    uid: instance?.uid ?? 0,
-    title: props.title,
-    status: 'opened',
-    isFocused: false,
-    setStatus,
-    setFocus
-})
 
 onMounted(() => {
     if (baseTitleBar.value && baseTitleBar.value.self && self.value) {
@@ -87,7 +73,7 @@ onMounted(() => {
         })
     }
 
-    store.addOpenedWindow(window)
+    store.addOpenedShortcut(props.shortcut)
 })
 
 </script>

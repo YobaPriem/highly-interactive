@@ -1,6 +1,6 @@
 <template>
     <BaseWindow
-        :title="title"
+        :shortcut="shortcut"
     >
         <WindowFolderContent>
             <slot/>
@@ -10,10 +10,12 @@
 </template>
 
 <script lang="ts" setup>
+import { IFilesystemItem } from '~/interfaces/filesystem-item'
+
 defineProps({
-    title: {
+    shortcut: {
         required: true,
-        type: String
-    }
+        type: Object as PropType<IFilesystemItem>
+    },
 })
 </script>

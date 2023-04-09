@@ -11,6 +11,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                 attributes: {
                     title: 'My Computer',
                     iconCode: 'icon-large-explorer',
+                    focused: false,
                     // component: 'TheMyComputer',
                     children: []
                 },
@@ -20,6 +21,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                 attributes: {
                     title: 'My Documents',
                     iconCode: 'icon-large-my-documents',
+                    focused: false,
                     // component: 'TheMyDocuments',
                     children: []
                 },
@@ -29,6 +31,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                 attributes: {
                     title: 'Recycle Bin',
                     iconCode: 'icon-large-recycle-full',
+                    focused: false,
                     component: 'TheRecycleBinWindow',
                     children: [
                         {
@@ -36,6 +39,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                             attributes: {
                                 title: 'work.txt',
                                 iconCode: 'icon-large-txt',
+                                focused: false,
                                 component: 'TxtFile',
                                 children: []
                             },
@@ -45,6 +49,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                             attributes: {
                                 title: 'phones.txt',
                                 iconCode: 'icon-large-txt',
+                                focused: false,
                                 component: 'TxtFile',
                                 children: []
                             },
@@ -54,6 +59,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                             attributes: {
                                 title: 'family.txt',
                                 iconCode: 'icon-large-txt',
+                                focused: false,
                                 component: 'TxtFile',
                                 children: []
                             },
@@ -63,6 +69,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                             attributes: {
                                 title: 'password.txt',
                                 iconCode: 'icon-large-txt',
+                                focused: false,
                                 component: 'TxtFile',
                                 children: []
                             },
@@ -78,6 +85,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                 attributes: {
                     title: 'Programs',
                     iconCode: 'icon-large-explorer',
+                    focused: false,
                     children: []
                 },
             },
@@ -86,6 +94,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                 attributes: {
                     title: 'Documents',
                     iconCode: 'icon-large-my-documents',
+                    focused: false,
                     children: [
                     ]
                 },
@@ -95,6 +104,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                 attributes: {
                     title: 'Documents',
                     iconCode: 'icon-large-my-documents',
+                    focused: false,
                     children: []
                 },
             },
@@ -103,6 +113,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                 attributes: {
                     title: 'Documents',
                     iconCode: 'icon-large-my-documents',
+                    focused: false,
                     children: []
                 },
             },
@@ -111,6 +122,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                 attributes: {
                     title: 'Shut down',
                     iconCode: 'icon-large-shutdown',
+                    focused: false,
                     // component: 'TheShutdown',
                     startTreeDelimiter: 'top',
                     children: []

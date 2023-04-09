@@ -1,6 +1,6 @@
 <template>
     <WindowFolder
-        :title="shortcut.attributes.title"
+        :shortcut="shortcut"
     >
         <DesktopShortcut
             v-for="child in shortcut.attributes.children"

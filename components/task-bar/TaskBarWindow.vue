@@ -1,32 +1,35 @@
 <template>
     <BaseButton
-        @click="windowComponent.setStatus('opened')"
-        @focus="windowComponent.setFocus(true)"
-        @blur="windowComponent.setFocus(false)"
-        :active="windowComponent.isFocused"
+        @focus="setFocus(true)"
+        @blur="setFocus(false)"
+        :active="shortcut.attributes.focused"
     >
         <BaseIcon
             class="mr-1"
-            v-if="windowComponent.icon"
-            :icon-code="windowComponent.icon"
+            v-if="shortcut.attributes.iconCode"
+            :icon-code="shortcut.attributes.iconCode"
         />
         <span
             class="text-task-bar"
         >
-            {{ windowComponent.title }}
+            {{ shortcut.attributes.title }}
         </span>
     </BaseButton>
 </template>
 
 <script setup lang="ts">
 import { PropType } from 'vue'
-import { IWindowComponent } from '~~/interfaces/window'
+import { IFilesystemItem } from '~/interfaces/filesystem-item'
 
 const props = defineProps({
-    windowComponent: {
+    shortcut: {
         required: true,
-        type: Object as PropType<IWindowComponent>
+        type: Object as PropType<IFilesystemItem>
     }
 })
+
+const setFocus = (value: boolean) => {
+    props.shortcut.attributes.focused = value
+}
 
 </script>
