@@ -1,7 +1,7 @@
 <template>
     <BaseButton
-        @focus="setFocus(true)"
-        @blur="setFocus(false)"
+        @focus="toggleShortcutAppearence(shortcut, 'focused', true)"
+        @blur="toggleShortcutAppearence(shortcut, 'focused', false)"
         :active="shortcut.attributes.focused"
     >
         <BaseIcon
@@ -21,15 +21,12 @@
 import { PropType } from 'vue'
 import { IFilesystemItem } from '~/interfaces/filesystem-item'
 
-const props = defineProps({
+const { toggleShortcutAppearence } = useFileSystemStore()
+
+defineProps({
     shortcut: {
         required: true,
         type: Object as PropType<IFilesystemItem>
     }
 })
-
-const setFocus = (value: boolean) => {
-    props.shortcut.attributes.focused = value
-}
-
 </script>

@@ -6,6 +6,7 @@ export interface IFilesystemItem {
         component?: string
         startTreeDelimiter?: 'top' | 'bottom' | 'both'
         focused: boolean
+        opened: boolean
         children:  IFilesystemItem[]
     }
 }

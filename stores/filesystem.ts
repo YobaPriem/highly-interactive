@@ -1,7 +1,4 @@
-import { defineStore } from "pinia"
 import { IFilesystemItem } from "~/interfaces/filesystem-item"
-
-// TODO: доделать группы - каждый ярлык - группа какая-то - каждая группа - в глобальной группе для пуска (top\bottom\main) - у групп могут быть подгруппы
 
 export const useFileSystemStore = defineStore('filesystem', {
     state: () => ({
@@ -12,7 +9,8 @@ export const useFileSystemStore = defineStore('filesystem', {
                     title: 'My Computer',
                     iconCode: 'icon-large-explorer',
                     focused: false,
-                    // component: 'TheMyComputer',
+                    opened: false,
+                    component: 'TheMyComputer',
                     children: []
                 },
             },
@@ -22,17 +20,8 @@ export const useFileSystemStore = defineStore('filesystem', {
                     title: 'My Documents',
                     iconCode: 'icon-large-my-documents',
                     focused: false,
-                    // component: 'TheMyDocuments',
-                    children: []
-                },
-            },
-            {
-                id: 'item-2',
-                attributes: {
-                    title: 'Recycle Bin',
-                    iconCode: 'icon-large-recycle-full',
-                    focused: false,
-                    component: 'TheRecycleBinWindow',
+                    opened: false,
+                    component: 'TheMyDocuments',
                     children: [
                         {
                             id: 'item-1-0',
@@ -40,6 +29,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                                 title: 'work.txt',
                                 iconCode: 'icon-large-txt',
                                 focused: false,
+                                opened: false,
                                 component: 'TxtFile',
                                 children: []
                             },
@@ -50,6 +40,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                                 title: 'phones.txt',
                                 iconCode: 'icon-large-txt',
                                 focused: false,
+                                opened: false,
                                 component: 'TxtFile',
                                 children: []
                             },
@@ -60,6 +51,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                                 title: 'family.txt',
                                 iconCode: 'icon-large-txt',
                                 focused: false,
+                                opened: false,
                                 component: 'TxtFile',
                                 children: []
                             },
@@ -70,6 +62,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                                 title: 'password.txt',
                                 iconCode: 'icon-large-txt',
                                 focused: false,
+                                opened: false,
                                 component: 'TxtFile',
                                 children: []
                             },
@@ -77,7 +70,6 @@ export const useFileSystemStore = defineStore('filesystem', {
                     ]
                 },
             },
-          
         ] as IFilesystemItem[],
         startTree: [
             {
@@ -86,6 +78,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                     title: 'Programs',
                     iconCode: 'icon-large-explorer',
                     focused: false,
+                    opened: false,
                     children: []
                 },
             },
@@ -95,6 +88,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                     title: 'Documents',
                     iconCode: 'icon-large-my-documents',
                     focused: false,
+                    opened: false,
                     children: [
                     ]
                 },
@@ -105,6 +99,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                     title: 'Documents',
                     iconCode: 'icon-large-my-documents',
                     focused: false,
+                    opened: false,
                     children: []
                 },
             },
@@ -114,6 +109,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                     title: 'Documents',
                     iconCode: 'icon-large-my-documents',
                     focused: false,
+                    opened: false,
                     children: []
                 },
             },
@@ -123,6 +119,7 @@ export const useFileSystemStore = defineStore('filesystem', {
                     title: 'Shut down',
                     iconCode: 'icon-large-shutdown',
                     focused: false,
+                    opened: false,
                     // component: 'TheShutdown',
                     startTreeDelimiter: 'top',
                     children: []
@@ -131,32 +128,15 @@ export const useFileSystemStore = defineStore('filesystem', {
         ] as IFilesystemItem[]
     }),
     actions: {
-        // // getById(id: string): IFilesystemItem | null {
-        // //     let findedItem: IFilesystemItem | null = null
-
-        // //     this.tree.find(item => {
-        // //         i
-        // //     })
-
-        // //     const recursiveFn = (item: IFilesystemItem, id: string) => {
-        // //         if (item.id === id) {
-        // //             return item
-        // //         } else if (item.children.length) {
-
-        // //         } else {
-        // //             return null
-        // //         }
-        // //     }
-
-        // //     return findedItem
-        // // },
-        // replaceChildren(donor: IFilesystemItem, recipient: IFilesystemItem, childId: string) {
-        //     const childIterableId = donor.attributes.children.findIndex(item => item.id === childId)
-
-        //     if (childIterableId < 0) return void 0
-
-        //     recipient.attributes.children.push(donor.attributes.children[childIterableId])
-        //     donor.attributes.children.splice(childIterableId, 1)
-        // },
+        test() {
+            console.log('useFileSystemStore:test')
+        },
+        toggleShortcutAppearence(shortcut: IFilesystemItem, property: 'focused' | 'opened', forcedValue?: boolean) {
+            if (forcedValue !== undefined) {
+                shortcut.attributes[property] = forcedValue
+            } else {
+                shortcut.attributes[property] = !shortcut.attributes.opened
+            }
+        },
     }
 })

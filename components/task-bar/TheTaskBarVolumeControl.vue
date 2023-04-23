@@ -31,8 +31,6 @@
 </template>
 
 <script setup lang="ts">
-import { useTaskBarStore } from '~/stores/taskbar'
-
 const taskBarStore = useTaskBarStore()
 const controlOpened = ref(false)
 const mute = ref(false)

@@ -2,7 +2,7 @@
     <div
         class="flex items-stretch justify-between h-[21px] text-[9px] leading-3"
     >
-        <div
+        <!-- <div
             class="
                 grow-[3]
                 px-[3px]
@@ -31,10 +31,6 @@
             "
         >
             parent
-        </div>
+        </div> -->
     </div>
 </template>
-
-<script setup lang="ts">
-
-</script>

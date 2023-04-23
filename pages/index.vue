@@ -5,7 +5,7 @@
     >
         <template
             v-for="shortcut in filesystemStore.desktopTree"
-            #[`shortcut-${shortcut.id}`]="{ shortcut }"
+            #[`shortcut-${shortcut.id}`]
         >
             <DesktopShortcut
                 :shortcut="shortcut"
@@ -24,7 +24,5 @@
 </template>
 
 <script setup lang="ts">
-import { useFileSystemStore } from '~~/stores/filesystem'
-
 const filesystemStore = useFileSystemStore()
 </script>

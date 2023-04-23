@@ -27,11 +27,13 @@ export default defineNuxtPlugin(app => {
             el.clickFunction = clickOutside(el, binding)
 
             window.addEventListener('click', el.clickFunction)
+            window.addEventListener('contextmenu', el.clickFunction)
         },
         beforeUnmount: (
             el: HTMLElementWithClick,
         ):void => {
             window.removeEventListener('click', el.clickFunction)
+            window.addEventListener('contextmenu', el.clickFunction)
         }
     })
 })

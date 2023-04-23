@@ -1,13 +1,14 @@
 <template>
-    <WindowFolder
+    <WindowsFolder
         :shortcut="shortcut"
     >
         <DesktopShortcut
             v-for="child in shortcut.attributes.children"
             :key="child.id"
             :shortcut="child"
+            :draggable="false"
         />
-    </WindowFolder>
+    </WindowsFolder>
 </template>
 
 <script lang="ts" setup>

@@ -18,7 +18,5 @@
 </template>
 
 <script setup lang="ts">
-import { useFileSystemStore } from '~/stores/filesystem'
-
 const store = useFileSystemStore()
 </script>

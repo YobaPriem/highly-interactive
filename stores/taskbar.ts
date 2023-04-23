@@ -1,4 +1,3 @@
-import { defineStore } from "pinia"
 import { IFilesystemItem } from '~/interfaces/filesystem-item'
 
 export const useTaskBarStore = defineStore('taskbar', {
@@ -9,6 +8,9 @@ export const useTaskBarStore = defineStore('taskbar', {
         soundLevelBeforeMute: 100,
     }),
     actions: {
+        test() {
+            console.log('useTaskBarStore:test')
+        },
         setSoundLevel(value: number) {
             if (value < 0) value = 0
             if (value > 100) value = 100
@@ -24,14 +26,15 @@ export const useTaskBarStore = defineStore('taskbar', {
                 this.soundLevel = this.soundLevelBeforeMute
             }
         },
-        test() {
-            console.log(1231231)
+        addOpenedShortcut(shortcut: IFilesystemItem) {
+            this.openedShortcuts.push(shortcut)
         },
-        addOpenedShortcut(value: IFilesystemItem) {
-            this.openedShortcuts.push(value)
-        },
-        removeOpenedWindow() {
-            // TODO:
+        removeOpenedShortcut(shortcut: IFilesystemItem) {
+            const id = this.openedShortcuts.findIndex(el => el.id === shortcut.id)
+
+            if (id < 0) return void 0
+
+            this.openedShortcuts.splice(id, 1)
         }
     }
 })

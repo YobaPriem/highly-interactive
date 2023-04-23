@@ -24,15 +24,19 @@
             class="dummy w-[85px] h-[70px]"
         >
         </div>
-        <slot
-            name="windows"
-        />
+        <div
+            class="fixed top-0 left-0 right-0 bottom-0 pointer-events-none"
+        >
+            <slot
+                name="windows"
+            />
+        </div>
     </div>
     <TheTaskBar/>
 </template>
 
 <script setup lang="ts">
-import { IFilesystemItem } from '~~/interfaces/filesystem-item'
+import { IFilesystemItem } from '~/interfaces/filesystem-item'
 
 const props = defineProps({
     desktopTree: {

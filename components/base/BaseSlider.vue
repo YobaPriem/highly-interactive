@@ -22,7 +22,6 @@
 // TODO: на скорую руку накидал, перенести прям подключение к стору в пропсы
 import noUiSlider from 'nouislider'
 import 'nouislider/dist/nouislider.css'
-import { useTaskBarStore } from '~/stores/taskbar'
 
 const store = useTaskBarStore()
 

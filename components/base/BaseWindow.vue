@@ -1,7 +1,7 @@
 <template>
     <div
         ref="self"
-        class="p-[3px] shadow-base absolute flex flex-col min-w-[150px] min-h-[100px] bg-base-gray-2 z-10"
+        class="p-[3px] shadow-base absolute flex flex-col min-w-[150px] min-h-[100px] bg-base-gray-2 z-10 pointer-events-auto"
         tabindex="0"
         @focus="setFocus(true)"
         @blur="setFocus(false)"
@@ -11,8 +11,7 @@
     >
         <BaseTitleBar
             ref="baseTitleBar"
-            :title="shortcut.attributes.title"
-            :focused="shortcut.attributes.focused"
+            :shortcut="shortcut"
         >
         </BaseTitleBar>
         <slot/>
@@ -32,7 +31,6 @@
 
 <script setup lang="ts">
 import { IFilesystemItem } from '~/interfaces/filesystem-item'
-import { useTaskBarStore } from '~/stores/taskbar'
 import BaseTitleBar from './BaseTitleBar.vue'
 
 const props = defineProps({
@@ -74,6 +72,10 @@ onMounted(() => {
     }
 
     store.addOpenedShortcut(props.shortcut)
+})
+
+onUnmounted(() => {
+    store.removeOpenedShortcut(props.shortcut)
 })
 
 </script>

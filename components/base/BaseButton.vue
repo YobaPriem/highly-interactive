@@ -9,7 +9,7 @@
             items-center
         "
         :class="{
-            'px-[3px] py-1': !hidePaddings,
+            'px-[5px] py-1': !hidePaddings,
             'shadow-base-active': active
         }"
         type="button"

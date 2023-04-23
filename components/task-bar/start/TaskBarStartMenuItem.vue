@@ -34,9 +34,9 @@
                 />
             </div>
         </div>
-        <TaskBarStartMenuGroup
+        <TaskBarStartMenuItem
             v-if="menuItem.attributes.children.length && isChildrenMenuShowed"
-            :group="menuItem"
+            :menu-item="menuItem"
             :is-children="true"
             class="bg-base-gray-2 absolute top-0 right-0 shadow-base translate-x-full min-w-[150px]"
         />

@@ -8,11 +8,19 @@ export default defineNuxtConfig({
       '~/assets/styles/main.css'
   ],
   modules: [
-    '@pinia/nuxt'
+    [
+      '@pinia/nuxt',
+      {
+        autoImports: ['defineStore']
+      }
+    ]
   ],
   plugins: [
     '~/plugins/vue-click-outside'
   ],
+  imports: {
+    dirs: ['stores']
+  },
   postcss: {
     plugins: {
       tailwindcss: {},

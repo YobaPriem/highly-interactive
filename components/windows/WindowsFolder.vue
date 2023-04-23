@@ -2,10 +2,10 @@
     <BaseWindow
         :shortcut="shortcut"
     >
-        <WindowFolderContent>
+        <WindowsFolderContent>
             <slot/>
-        </WindowFolderContent>
-        <WindowFolderInfo/>
+        </WindowsFolderContent>
+        <WindowsFolderInfo/>
     </BaseWindow>
 </template>
 
