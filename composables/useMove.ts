@@ -9,7 +9,8 @@ const useMove = (options: {
     point: HTMLElement,
     direction: 'horizontal' | 'vertical' | 'both',
     target?: HTMLElement,
-    thresholds?: UseMoveThresholds
+    thresholds?: UseMoveThresholds,
+    respectInitialTranslate?: true // Пока учитываю только если центрировали элемент 
 }) => {
     const movePoint = options.point
     const moveTarget = options.target ?? movePoint
@@ -17,6 +18,7 @@ const useMove = (options: {
     const thresholds = options.thresholds
 
     let started = false
+    let respectInitialTranslate = options.respectInitialTranslate ?? false
 
     const posValues = {
         startX: 0,
@@ -34,13 +36,21 @@ const useMove = (options: {
     
         let posX = 0
         let posY = 0
-    
+        
+        let offsetX = 0
+        let offsetY = 0
+
+        if (respectInitialTranslate) {
+            offsetX = moveTarget.clientWidth / 2
+            offsetY = moveTarget.clientHeight / 2
+        }
+
         if (window.TouchEvent && e instanceof TouchEvent) {
-            posX = e.changedTouches[0].clientX
-            posY = e.changedTouches[0].clientY
+            posX = e.changedTouches[0].clientX + offsetX
+            posY = e.changedTouches[0].clientY + offsetY
         } else if (e instanceof MouseEvent) {
-            posX = e.clientX
-            posY = e.clientY
+            posX = e.clientX + offsetX
+            posY = e.clientY + offsetY
         }
     
         posValues.startX = posX - posValues.deltaX
@@ -88,8 +98,8 @@ const useMove = (options: {
     const moveEndHandler = (e: TouchEvent | MouseEvent) => {
         if (!started || e.target as HTMLElement !== movePoint) return void 0
         started = false
-        posValues.startX = posValues.currentX
-        posValues.startY = posValues.currentY
+
+        respectInitialTranslate = false
 
         detachListeners()
     }

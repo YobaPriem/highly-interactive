@@ -8,7 +8,7 @@
             class="mt-4"
             @click="toggleShortcutAppearence(shortcut, 'opened', false)"
         >
-            Well... Ok? I guess...
+            Well, ok? I guess...
         </BaseButton>
     </WindowsError>
 </template>

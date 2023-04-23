@@ -1,10 +1,10 @@
 <template>
     <div
         ref="self"
-        class="p-[3px] shadow-base absolute flex flex-col min-w-[150px] min-h-[100px] bg-base-gray-2 z-10 pointer-events-auto"
+        class="p-[3px] shadow-base absolute flex flex-col min-w-[150px] min-h-[100px] bg-base-gray-2 z-10 pointer-events-auto top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 use-move-respect-translate"
         tabindex="0"
-        @focus="setFocus(true)"
-        @blur="setFocus(false)"
+        @focus="toggleShortcutAppearence(props.shortcut, 'focused', true)"
+        @blur="toggleShortcutAppearence(props.shortcut, 'focused', false)"
         :class="{
             'z-20': shortcut.attributes.focused
         }"
@@ -32,6 +32,7 @@
 <script setup lang="ts">
 import { IFilesystemItem } from '~/interfaces/filesystem-item'
 import BaseTitleBar from './BaseTitleBar.vue'
+const { toggleShortcutAppearence } = useFileSystemStore()
 
 const props = defineProps({
     resizable: {
@@ -50,16 +51,13 @@ const baseTitleBar = ref<InstanceType<typeof BaseTitleBar>>()
 const self = ref<HTMLElement>()
 const resizer = ref<HTMLElement>()
 
-const setFocus = (value: boolean) => {
-    props.shortcut.attributes.focused = value
-}
-
 onMounted(() => {
     if (baseTitleBar.value && baseTitleBar.value.self && self.value) {
         useMove({
             point: baseTitleBar.value.self,
             target: self.value,
-            direction: 'both'
+            direction: 'both',
+            respectInitialTranslate: true
         })
     }
 

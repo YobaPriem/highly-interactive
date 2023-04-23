@@ -3,7 +3,7 @@
         ref="self"
         class="shortcut w-[85px] max-h-[70px] flex flex-col items-center gap-[7px] py-2 relative"
         :class="{
-            'shortcut--focused': shortcut.attributes.focused,
+            'shortcut--focused': shortcut.attributes.focused && !shortcut.attributes.opened,
             'draggable': draggable
         }"
         :draggable="draggable"
@@ -19,7 +19,7 @@
         <span
             class="text-center text-white text-title border border-dashed border-transparent"
             :class="{
-                'bg-shortcut-selected-blue border-white': shortcut.attributes.focused
+                'bg-shortcut-selected-blue border-white': shortcut.attributes.focused && !shortcut.attributes.opened
             }"
         >
             {{ shortcut.attributes.title }}
@@ -71,6 +71,10 @@ const toggleContenxtMenu = (forcedValue?: boolean) => {
 
 const handleClickOutside = () => {
     toggleContenxtMenu(false)
+
+    if (!props.shortcut.attributes.opened) {
+        toggleShortcutAppearence(props.shortcut, 'focused', false)
+    }
 }
 
 </script>
